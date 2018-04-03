@@ -1,6 +1,7 @@
 FROM debian:stretch
 
 ENV NGINX_VERISON=1.12.2
+ENV DOLLAR='$'
 
 RUN apt-get update -qq \
     && apt-get install -y --no-install-recommends \
@@ -55,6 +56,10 @@ RUN apt-get update -qq \
       --with-mail --with-mail_ssl_module \
       --add-module=/usr/local/src/ngx_small_light \
     && make \
-    && make install
+    && make install \
+    && mkdir /var/lib/nginx \
+    && mkdir /var/cache/imgproxy_cache
 
-CMD ["/etc/nginx/sbin/nginx", "-c", "/etc/nginx/nginx.conf"]
+COPY nginx/nginx.conf.template /etc/nginx/nginx.conf.template
+
+CMD bash -c "envsubst < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && /etc/nginx/sbin/nginx -c /etc/nginx/nginx.conf"
