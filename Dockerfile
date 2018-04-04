@@ -1,7 +1,6 @@
 FROM debian:stretch
 
 ENV NGINX_VERISON=1.12.2
-ENV DOLLAR='$'
 
 RUN apt-get update -qq \
     && apt-get install -y --no-install-recommends \
@@ -61,5 +60,15 @@ RUN apt-get update -qq \
     && mkdir /var/cache/imgproxy_cache
 
 COPY nginx/nginx.conf.template /etc/nginx/nginx.conf.template
+
+ENV DOLLAR='$'
+ENV PROXY_CACHE_DIR='/var/cache/imgproxy_cache'
+ENV PROXY_CACHE_LEVELS='1:2'
+ENV PROXY_CACHE_MAX_SIZE='1G'
+ENV PROXY_CACHE_INACTIVE='1h'
+ENV PROXY_CACHE_ZONE_SIZE='5m'
+ENV PROXY_CACHE_VALID_200='1h'
+ENV S3_DIR_PREFIX='images/'
+ENV URL_PREFIX='thumb/'
 
 CMD bash -c "envsubst < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && /etc/nginx/sbin/nginx -c /etc/nginx/nginx.conf"
