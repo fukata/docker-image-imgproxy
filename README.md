@@ -9,8 +9,8 @@ This is docker image of `ngx_small_light` .
 
 ```bash
 $ docker pull fukata/imgproxy
-$ docker run --env 'S3_BUCKET=example.com' -p 8888:80 fukata/imgproxy
-$ open http://127.0.0.1:8888/thumb/dw=300,dh=300,q=100/path/to/image.jpg
+$ docker run --env 'S3_BUCKET=img.example.com.s3-ap-northeast-1.amazonaws.com' -p 8888:80 fukata/imgproxy
+$ open http://127.0.0.1:8888/thumb/dw=300,dh=300,q=80/path/to/image.jpg
 ```
 
 # Environment Variables
