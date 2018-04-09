@@ -36,9 +36,9 @@ http {
         server_name small_light_server;
 
         small_light on;
-        small_light_pattern_define high   da=l,of=jpg,q=80,e=imlib2,jpeghint=y;
-        small_light_pattern_define medium da=l,of=jpg,q=60,e=imlib2,jpeghint=y;
-        small_light_pattern_define low    da=l,of=jpg,q=40,e=imlib2,jpeghint=y;
+        small_light_pattern_define high   da=l,of=jpg,q=95,e=imlib2,jpeghint=y;
+        small_light_pattern_define medium da=l,of=jpg,q=80,e=imlib2,jpeghint=y;
+        small_light_pattern_define low    da=l,of=jpg,q=60,e=imlib2,jpeghint=y;
 
         location ~ ^/${URL_PREFIX}([0-9]+)x([0-9]+)/([^/]+)/(.+)${DOLLAR} {
             set ${DOLLAR}width ${DOLLAR}1;
