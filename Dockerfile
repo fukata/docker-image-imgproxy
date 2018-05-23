@@ -1,6 +1,6 @@
 FROM debian:stretch
 
-ENV NGINX_VERISON=1.12.2
+ENV NGINX_VERISON=1.13.12
 
 RUN apt-get update -qq \
     && apt-get install -y --no-install-recommends \
