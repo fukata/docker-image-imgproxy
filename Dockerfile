@@ -1,6 +1,6 @@
 FROM debian:stretch
 
-ENV NGINX_VERISON=1.15.8
+ENV NGINX_VERSION=1.15.8
 
 RUN apt-get update -qq \
     && apt-get install -y --no-install-recommends \
@@ -22,10 +22,10 @@ RUN apt-get update -qq \
     && git clone https://github.com/cubicdaiya/ngx_small_light.git /usr/local/src/ngx_small_light \
     && cd /usr/local/src/ngx_small_light \
     && ./setup --with-imlib2 --with-gd \
-    && wget http://nginx.org/download/nginx-$NGINX_VERISON.tar.gz -O /usr/local/src/nginx-$NGINX_VERISON.tar.gz \
+    && wget http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz -O /usr/local/src/nginx-$NGINX_VERSION.tar.gz \
     && cd /usr/local/src/ \
-    && tar zxf nginx-$NGINX_VERISON.tar.gz \
-    && cd nginx-$NGINX_VERISON \
+    && tar zxf nginx-$NGINX_VERSION.tar.gz \
+    && cd nginx-$NGINX_VERSION \
     && ./configure \
       --prefix=/etc/nginx \
       --conf-path=/etc/nginx/nginx.conf \
